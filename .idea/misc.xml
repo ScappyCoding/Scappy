@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/custom_progress.xml" value="0.3585" />
+        <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/ic_menu_search.xml" value="0.1385" />
+        <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/ic_more_vert.xml" value="0.1385" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/layout/activity_main.xml" value="0.3572916666666667" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/layout/activity_splash_screen.xml" value="0.35993975903614456" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/layout/fragment_calls.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/layout/fragment_chats.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/layout/fragment_status.xml" value="0.25" />
+        <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/menu/menu_main.xml" value="0.3625" />
       </map>
     </option>
   </component>

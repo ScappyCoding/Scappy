@@ -1,6 +1,9 @@
 package com.codeofscappy.chat;
 
 
+import static com.codeofscappy.chat.R.*;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -14,6 +17,9 @@ import com.codeofscappy.chat.menu.ChatsFragment;
 import com.codeofscappy.chat.menu.StatusFragment;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +31,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, layout.activity_main);
 
         setUpWithViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
-
-
+        setSupportActionBar(binding.toolbar);
 
     }
     private void setUpWithViewPager(ViewPager viewPager) {
@@ -77,6 +82,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+    // Create a Menu and Inflate the Menu from Menu_Main.xml
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+       switch (id)
+       {
+           case R.id.menu_search: Toast.makeText(this, "Action Search", Toast.LENGTH_SHORT).show();
+           case R.id.menu_more: Toast.makeText(this, "Action More", Toast.LENGTH_SHORT).show();
+
+       }
+        return  super.onOptionsItemSelected(item);
+    }
 
 
 
