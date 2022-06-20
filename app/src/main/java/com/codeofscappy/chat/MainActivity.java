@@ -4,11 +4,13 @@ package com.codeofscappy.chat;
 import static com.codeofscappy.chat.R.*;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.codeofscappy.chat.databinding.ActivityMainBinding;
@@ -17,6 +19,7 @@ import com.codeofscappy.chat.menu.ChatsFragment;
 import com.codeofscappy.chat.menu.StatusFragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -36,6 +39,28 @@ public class MainActivity extends AppCompatActivity {
         setUpWithViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         setSupportActionBar(binding.toolbar);
+
+        binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeFabIcon(position);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+
+
 
     }
     private void setUpWithViewPager(ViewPager viewPager) {
@@ -104,6 +129,23 @@ public class MainActivity extends AppCompatActivity {
 
        }
         return  super.onOptionsItemSelected(item);
+    }
+
+    private void changeFabIcon(final int index){
+        binding.fabAction.hide();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (index){
+                    case 0 : binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_chat)); break;
+                    case 1 : binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_camera)); break;
+                    case 2 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_call)); break;
+                }
+                binding.fabAction.show();
+            }
+        },300);
+
     }
 
 
