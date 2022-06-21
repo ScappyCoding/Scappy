@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".startup.WelcomeScreenActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+    <ImageView
+        android:id="@+id/start_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/start" />
+
+    <TextView
+        android:id="@+id/txt_Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:text="Read our Privacy Policy,Tab Agree and Continue to"
+        android:textColor="#B2FFA000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_Service"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:textSize="16sp"
+        android:textColor="#B2FFA000"
+        android:text="accept the Terms of Service"/>
+
+    <TextView
+        android:id="@+id/accept_button"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt_Service"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="90dp"
+        android:background="@drawable/accept_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="Accept and Continue"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accept_button"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:text="from"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/autour_one"
+        android:gravity="center"
+        android:text="Code Of Scappy"
+        android:textColor="#FBC02D" />
+
+
+
+</RelativeLayout>
