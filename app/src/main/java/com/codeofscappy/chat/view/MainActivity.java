@@ -1,18 +1,17 @@
-package com.codeofscappy.chat;
+package com.codeofscappy.chat.view;
 
 
 import static com.codeofscappy.chat.R.*;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.codeofscappy.chat.R;
 import com.codeofscappy.chat.databinding.ActivityMainBinding;
 import com.codeofscappy.chat.menu.CallsFragment;
 import com.codeofscappy.chat.menu.ChatsFragment;

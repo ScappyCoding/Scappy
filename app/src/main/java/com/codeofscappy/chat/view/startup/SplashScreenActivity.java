@@ -1,4 +1,4 @@
-package com.codeofscappy.chat.startup;
+package com.codeofscappy.chat.view.startup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.codeofscappy.chat.MainActivity;
+import com.codeofscappy.chat.view.MainActivity;
 import com.codeofscappy.chat.R;
 
 public class SplashScreenActivity extends AppCompatActivity {

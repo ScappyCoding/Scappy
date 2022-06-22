@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941311129693",
+    "project_id": "chat-3e2d1",
+    "storage_bucket": "chat-3e2d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941311129693:android:0015ddd02215621e7f35b4",
+        "android_client_info": {
+          "package_name": "com.codeofscappy.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941311129693-tsks3b0j4t05av4eecs0d25en3p783hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABQtZOznoWzowmu3tx_Kbv5PzvlO2hgV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941311129693-tsks3b0j4t05av4eecs0d25en3p783hp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,15 @@
-package com.codeofscappy.chat.startup;
+package com.codeofscappy.chat.view.startup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.codeofscappy.chat.MainActivity;
+import com.codeofscappy.chat.view.MainActivity;
 import com.codeofscappy.chat.R;
+import com.codeofscappy.chat.view.auth.PhoneLoginActivity;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeScreenActivity.this, MainActivity.class);
+                Intent intent = new Intent(WelcomeScreenActivity.this, PhoneLoginActivity.class);
                 startActivity(intent);
             }
         });
