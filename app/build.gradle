@@ -46,4 +46,6 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
     // API-Library for Download and Show Images
     implementation 'com.github.bumptech.glide:glide:4.13.0'
+    // APi Country Code Picker
+    implementation 'com.hbb20:ccp:2.5.0'
 }
