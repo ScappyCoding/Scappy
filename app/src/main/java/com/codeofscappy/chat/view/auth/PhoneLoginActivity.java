@@ -56,7 +56,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_phone_login);
+        binding= DataBindingUtil.setContentView(this,R.layout.activity_phone_login);
 
 
 

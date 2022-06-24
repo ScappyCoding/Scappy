@@ -101,21 +101,19 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/btn_next"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:clickable="true"
-        android:background="@drawable/accept_button"
-        android:gravity="center"
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
         android:text="Next"
-        android:textColor="@color/black"
-        android:textSize="20sp"
         android:textStyle="bold"
-        android:focusable="true" />
+        android:fontFamily="@font/audiowide"
+        android:background="@drawable/accept_button"
+        android:textColor="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"/>
 
 
 

@@ -40,22 +40,23 @@ public class ChatsFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //Demo: User-List-->  Real User-List Implement later!
-        list.add(new Chatlist(
-                "11",
-                "Demo_User",
-                "Demo_Status",
-                "21.06.2022",
-                "https://pickaface.net/gallery/avatar/20160608_151321_4867_Jeffyou.png"));
+      // //Demo: User-List-->  Real User-List Implement later!
+      // list.add(new Chatlist(
+      //         "11",
+      //         "Demo_User",
+      //         "Demo_Status",
+      //         "21.06.2022",
+      //         "https://pickaface.net/gallery/avatar/20160608_151321_4867_Jeffyou.png"));
 
-        list.add(new Chatlist(
-                "12",
-                "Demo_User2",
-                "Demo_Status",
-                "21.06.2022",
-                "https://pickaface.net/gallery/avatar/20160110_040511_326_demo.png"));
+      // list.add(new Chatlist(
+      //         "12",
+      //         "Demo_User2",
+      //         "Demo_Status",
+      //         "21.06.2022",
+      //         "https://pickaface.net/gallery/avatar/20160110_040511_326_demo.png"));
 
-        recyclerView.setAdapter(new ChatListAdapter(list,getContext()));
+      // recyclerView.setAdapter(new ChatListAdapter(list,getContext()));
+
 
         return  view;
     }

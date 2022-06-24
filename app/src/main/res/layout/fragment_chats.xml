@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +10,66 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/in_invite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite your friends"
+            android:textSize="25sp"
+            android:fontFamily="@font/autour_one"
+            android:textColor="#2E2E2D"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="19sp"
+            android:fontFamily="@font/chicle"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="Chat with your friends who are use Scappy-Massenger on \nIPhone, Android, or KaiOS phone"/>
+
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
+                android:fontFamily="@font/audiowide"
+                android:shadowColor="#434242"
+                android:text="Invite a friend"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@drawable/accept_button"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#C1000000"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="None of your Contacts use Scappy Messanger. \nuse the Button below to invite them"/>
+
+
+    </LinearLayout>
 
 
 
 
-</LinearLayout>
+</FrameLayout>
+</layout>

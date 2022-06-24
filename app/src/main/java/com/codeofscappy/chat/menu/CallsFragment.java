@@ -40,24 +40,7 @@ public class CallsFragment extends Fragment {
 
 
         List<CallList> lists = new ArrayList<>();
-
-
-        // Demo: Call-List--> Real Call-List Implement later
-        lists.add(new CallList(
-                "001",
-                "Demo_User",
-                "21.06.2022",
-                "https://pickaface.net/gallery/avatar/20160608_151321_4867_Jeffyou.png",
-                "income"));
-
-        lists.add(new CallList(
-                "002",
-                "Demo_User2",
-                "21.06.2022",
-                "https://pickaface.net/gallery/avatar/20160110_040511_326_demo.png",
-                "missed"));
-
-        recyclerView.setAdapter(new CallListAdapter(lists, getContext()));
+        // recyclerView.setAdapter(new CallListAdapter(lists, getContext()));
         return view;
 
     }
