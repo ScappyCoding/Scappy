@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".view.auth.SetUserInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/audiowide"
+            android:text="Profile Info"
+            android:textColor="#B2FBC02D"
+            android:textSize="40sp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/image_profile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar"
+                app:civ_border="true"
+                app:civ_border_color="#BCF9A825"
+                app:civ_border_width="2dp" />
+
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="30dp"
+                android:layout_alignEnd="@id/image_profile"
+                android:layout_alignBottom="@id/image_profile"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/ic_add_circle_outline_24"
+                app:tint="#FF8F00" />
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+        <EditText
+            android:id="@+id/ed_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/white"
+            android:hint="Type your Name here..."
+            android:padding="8dp"
+            android:textColorHint="#5A5959" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/carter_one"
+            android:text="this is your First Time her"
+            android:textColor="#BEFFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/carter_one"
+            android:text="Please provide your name an optional profile photo"
+            android:textColor="#BEFFFFFF"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_next"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        android:background="@drawable/accept_button"
+        android:gravity="center"
+        android:text="Next"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:focusable="true" />
+
+
+
+
+
+</RelativeLayout>
+</layout>

@@ -19,8 +19,10 @@ import android.widget.Toast;
 
 import com.codeofscappy.chat.R;
 import com.codeofscappy.chat.databinding.ActivityPhoneLoginBinding;
+import com.codeofscappy.chat.model.user.Users;
 import com.codeofscappy.chat.view.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
@@ -29,6 +31,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
 
 import java.util.concurrent.TimeUnit;
@@ -36,13 +40,17 @@ import java.util.concurrent.TimeUnit;
 public class PhoneLoginActivity extends AppCompatActivity {
 
     private ActivityPhoneLoginBinding binding;
+
     private FirebaseAuth mAuth;
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+
     private ProgressDialog progressDialog;
 
 
+    private FirebaseUser firebaseUser;
+    private FirebaseFirestore firestore;
 
 
     @Override
@@ -52,14 +60,14 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
         //Firebase Instance
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            startActivity(new Intent(this, SetUserInfoActivity.class));
+        }
 
 
         progressDialog = new ProgressDialog(this);
@@ -159,10 +167,39 @@ public class PhoneLoginActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = task.getResult().getUser();
-                            startActivity(new Intent(PhoneLoginActivity.this, MainActivity.class));
-                        }
-                        else
-                        {
+
+                            startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
+
+                         //  if (user != null) {
+                         //      String userID = user.getUid();
+                         //      Users users = new Users(
+                         //              userID,
+                         //              "",
+                         //              user.getPhoneNumber(),
+                         //              "",
+                         //              "",
+                         //              "",
+                         //              "",
+                         //              "",
+                         //              "",
+                         //              "");
+
+                         //      firestore.collection("Users").document("UserInfo").collection(userID)
+                         //              .add(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                         //                  @Override
+                         //                  public void onSuccess(DocumentReference documentReference) {
+
+                         //                      startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
+                         //                  }
+                         //              });
+                         //  }else {
+                         //      Toast.makeText(getApplicationContext(), "Something Error", Toast.LENGTH_SHORT).show();
+                         //  }
+
+
+
+
+                        } else {
                             // Sign in failed, display a message and update the UI
                             progressDialog.dismiss();
                             Log.d("TAG","signInWithCredentials:failure",task.getException());
@@ -176,9 +213,6 @@ public class PhoneLoginActivity extends AppCompatActivity {
                 });
     }
     // [END sign_in_with_phone]
-
-
-
 
 
 }

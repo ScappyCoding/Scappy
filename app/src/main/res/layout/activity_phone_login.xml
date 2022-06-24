@@ -162,12 +162,14 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:gravity="center"
+        android:clickable="true"
         android:background="@drawable/accept_button"
+        android:gravity="center"
+        android:text="Next"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:text="Next" />
+        android:textStyle="bold"
+        android:focusable="true" />
 </RelativeLayout>
 
 </layout>
