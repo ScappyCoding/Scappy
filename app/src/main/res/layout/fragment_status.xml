@@ -9,7 +9,6 @@
     tools:context=".menu.StatusFragment">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#75E8E6E6"

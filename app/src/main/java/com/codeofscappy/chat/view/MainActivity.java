@@ -17,6 +17,7 @@ import com.codeofscappy.chat.menu.CallsFragment;
 import com.codeofscappy.chat.menu.ChatsFragment;
 import com.codeofscappy.chat.menu.StatusFragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, layout.activity_main);
+
+       
 
         setUpWithViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+
+
         });
 
 
@@ -113,18 +118,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
+
         return true;
 
 
     }
+
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
        switch (id)
        {
-           case R.id.menu_search: Toast.makeText(this, "Action Search", Toast.LENGTH_SHORT).show();
-           case R.id.menu_more: Toast.makeText(this, "Action More", Toast.LENGTH_SHORT).show();
+           case R.id.menu_search : Toast.makeText(MainActivity.this, "Action Search", Toast.LENGTH_SHORT).show();
+           case R.id.action_new_group : Toast.makeText(MainActivity.this, "Action Groups", Toast.LENGTH_SHORT).show();
+           case R.id.action_new_broadcast : Toast.makeText(MainActivity.this, "Action Broadcast", Toast.LENGTH_SHORT).show();
+           case R.id.action_messenger_web : Toast.makeText(MainActivity.this, "Action Web", Toast.LENGTH_SHORT).show();
+           case R.id.action_logout : Toast.makeText(MainActivity.this, "Action logout", Toast.LENGTH_SHORT).show();
 
        }
         return  super.onOptionsItemSelected(item);
@@ -134,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         binding.fabAction.hide();
 
         new Handler().postDelayed(new Runnable() {
+
             @Override
             public void run() {
                 switch (index){

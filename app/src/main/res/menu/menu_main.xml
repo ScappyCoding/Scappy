@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_menu_search"
@@ -9,17 +10,39 @@
         android:title="Search"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/menu_more"
-        android:icon="@drawable/ic_more_vert"
-        android:title="Search"
-        android:iconTint="@color/white"
-        app:showAsAction="always"/>
+
+
+    <group
+        android:id="@+id/action_more">
+
+        <item
+            android:id="@+id/action_new_group"
+            android:title="New Group"
+            android:iconTint="@color/white" />
+
+        <item
+            android:id="@+id/action_new_broadcast"
+            android:title="New Broadcast"
+            android:iconTint="@color/white" />
+
+        <item
+            android:id="@+id/action_messenger_web"
+            android:title="Scappy Messenger Web"
+            android:iconTint="@color/white" />
+
+        <item
+            android:id="@+id/action_settings"
+            android:title="Settings"
+            android:iconTint="@color/white" />
+
+        <item
+            android:id="@+id/action_logout"
+            android:title="LogOut"
+            android:iconTint="@color/white" />
 
 
 
-
-
+    </group>
 
 
 
