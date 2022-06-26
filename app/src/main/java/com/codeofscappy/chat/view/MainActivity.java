@@ -16,8 +16,10 @@ import com.codeofscappy.chat.databinding.ActivityMainBinding;
 import com.codeofscappy.chat.menu.CallsFragment;
 import com.codeofscappy.chat.menu.ChatsFragment;
 import com.codeofscappy.chat.menu.StatusFragment;
+import com.codeofscappy.chat.view.settings.SettingsActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -131,11 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
        switch (id)
        {
-           case R.id.menu_search : Toast.makeText(MainActivity.this, "Action Search", Toast.LENGTH_SHORT).show();
-           case R.id.action_new_group : Toast.makeText(MainActivity.this, "Action Groups", Toast.LENGTH_SHORT).show();
-           case R.id.action_new_broadcast : Toast.makeText(MainActivity.this, "Action Broadcast", Toast.LENGTH_SHORT).show();
-           case R.id.action_messenger_web : Toast.makeText(MainActivity.this, "Action Web", Toast.LENGTH_SHORT).show();
-           case R.id.action_logout : Toast.makeText(MainActivity.this, "Action logout", Toast.LENGTH_SHORT).show();
+           case R.id.menu_search : Toast.makeText(MainActivity.this, "Action Search", Toast.LENGTH_SHORT).show(); break;
+           case R.id.action_new_group : Toast.makeText(MainActivity.this, "Action Groups", Toast.LENGTH_SHORT).show(); break;
+           case R.id.action_new_broadcast : Toast.makeText(MainActivity.this, "Action Broadcast", Toast.LENGTH_SHORT).show(); break;
+           case R.id.action_messenger_web : Toast.makeText(MainActivity.this, "Action Web", Toast.LENGTH_SHORT).show(); break;
+           case R.id.action_logout : Toast.makeText(MainActivity.this, "Action logout", Toast.LENGTH_SHORT).show(); break;
+           case R.id.action_settings :
+               startActivity(new Intent(MainActivity.this, SettingsActivity.class)); break;
 
        }
         return  super.onOptionsItemSelected(item);
@@ -149,8 +154,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 switch (index){
-                    case 0 : binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_chat)); break;
-                    case 1 : binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_camera)); break;
+                    case 0 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_chat)); break;
+                    case 1 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_camera)); break;
                     case 2 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_call)); break;
                 }
                 binding.fabAction.show();
