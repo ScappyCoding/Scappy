@@ -1,14 +1,19 @@
 package com.codeofscappy.chat.view.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 
 import com.codeofscappy.chat.R;
 import com.codeofscappy.chat.databinding.ActivitySettingsBinding;
+import com.codeofscappy.chat.view.MainActivity;
+import com.codeofscappy.chat.view.profile.ProfileActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +33,14 @@ public class SettingsActivity extends AppCompatActivity {
        binding = DataBindingUtil.setContentView(this,R.layout.activity_settings);
 
 
-       //TODO [Back-Arrow binding]
+       Toolbar toolbar = findViewById(R.id.toolbar);
+       toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24);
+       toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+           }
+       });
 
 
 
@@ -42,8 +54,19 @@ public class SettingsActivity extends AppCompatActivity {
            getInfo();
 
        }
+       initClickAction();
 
     }
+
+    private void initClickAction() {
+        binding.setProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, ProfileActivity.class));
+            }
+        });
+    }
+
 
     // This Methode Read the Data from Current-User and Push this Into the View-Elements
     private void getInfo() {
