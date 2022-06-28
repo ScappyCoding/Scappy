@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.codeofscappy.chat.R;
 import com.codeofscappy.chat.databinding.ActivitySettingsBinding;
 import com.codeofscappy.chat.view.MainActivity;
@@ -33,6 +34,11 @@ public class SettingsActivity extends AppCompatActivity {
        binding = DataBindingUtil.setContentView(this,R.layout.activity_settings);
 
 
+
+
+
+       // InitialField:
+
        Toolbar toolbar = findViewById(R.id.toolbar);
        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24);
        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -43,11 +49,9 @@ public class SettingsActivity extends AppCompatActivity {
        });
 
 
-
        // Instance of Firebase Services
        firestore = FirebaseFirestore.getInstance();
        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
 
        // When User Ok! -->  getInfo Methode in Action
        if (firebaseUser != null){
@@ -58,6 +62,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+    // Open ProfileSettings for Set/Change Data and Image!
     private void initClickAction() {
         binding.setProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +77,20 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-    // This Methode Read the Data from Current-User and Push this Into the View-Elements
+
+
+
+
+    // This Methode Read the Data from FireStores: "Current-User" and Push this Into the View-Elements
     private void getInfo() {
         firestore.collection("Users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String userName = documentSnapshot.get("userName").toString();
+                String imageProfile = documentSnapshot.get("imageProfile").toString();
                 binding.tvUsername.setText(userName);
+                // Download the Image-Uri and put into the View
+                Glide.with(SettingsActivity.this).load(imageProfile).into(binding.imageProfile);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
