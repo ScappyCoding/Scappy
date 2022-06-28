@@ -10,9 +10,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private FirebaseFirestore firestore;
 
-    private BottomSheetDialog bottomSheetDialog;
+    private BottomSheetDialog bottomSheetDialog, bsDialogEditName;
     private ProgressDialog progressDialog;
 
     private int IMAGE_GALLERY_REQUEST = 111;
@@ -81,24 +83,39 @@ public class ProfileActivity extends AppCompatActivity {
         if (firebaseUser != null){
             getInfo();
         }
-        
+
+        // Initial BottomSheetPhoto
         initActionClick();
+        // Initial BottomSheetName
+        ClickAction();
 
 
 
     }
+
+    private void ClickAction() {
+        binding.proEditName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetEditName();
+            }
+        });
+    }
+
     // Button for BottomSheetDialog-Layout
     private void initActionClick() {
         binding.fabCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showBottomSheetPickPhoto();
+
             }
         });
     }
 
-    // Methode for the DialogSheet
 
+
+    // Methode for the DialogSheet
     @SuppressLint("ObsoleteSdkInt")
     private void showBottomSheetPickPhoto() {
           View view = getLayoutInflater().inflate(R.layout.bottom_sheet_pick,null);
@@ -123,6 +140,56 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        bsDialogEditName = new BottomSheetDialog(this);
+        bsDialogEditName.setContentView(view);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Objects.requireNonNull(bsDialogEditName.getWindow()).addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        bsDialogEditName.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                bsDialogEditName = null;
+            }
+        });
+
+        bsDialogEditName.show();
+
+
+    }
+
+
+    @SuppressLint("ObsoleteSdkInt")
+    private void showBottomSheetEditName() {
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_edit_name,null);
+
+        ((View) view.findViewById(R.id.btn_cancel)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        // Takes the input from User from BottomSheetEdit  and Update the View
+        EditText edUserName = view.findViewById(R.id.ed_username);
+        ((View) view.findViewById(R.id.btn_save)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateName(edUserName.getText().toString());
+                if (TextUtils.isEmpty(edUserName.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Name can´e be empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    updateName(edUserName.getText().toString());
+                    bottomSheetDialog.dismiss();
+                }
+
+
+            }
+        });
+
+
+
         bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(view);
 
@@ -139,9 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         bottomSheetDialog.show();
 
-
     }
-
 
 
 
@@ -282,6 +347,20 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+
+
+    // Methode to Update the new Username in Firestore-Database and make Toast when Success Saving..
+    private void updateName(String newName) {
+        firestore.collection("Users").document(firebaseUser.getUid()).update("userName",newName)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "Update Successfully", Toast.LENGTH_SHORT).show();
+                        getInfo();
+                    }
+                });
     }
 
 
