@@ -6,6 +6,8 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,11 +23,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.bumptech.glide.Glide;
 import com.codeofscappy.chat.R;
+import com.codeofscappy.chat.common.Common;
 import com.codeofscappy.chat.databinding.ActivityProfileBinding;
+import com.codeofscappy.chat.view.display.ViewImageActivity;
 import com.codeofscappy.chat.view.settings.SettingsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -55,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
     private int IMAGE_GALLERY_REQUEST = 111;
     private int CAMERA_PIC_REQUEST = 112;
     private Uri imageUri, cameraUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +117,25 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+
+        // Zoomable Image Methode
+        binding.imageProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.imageProfile.invalidate();
+                Drawable dr = binding.imageProfile.getDrawable();
+                Common.IMAGE_BITMAP = ((BitmapDrawable)dr.getCurrent()).getBitmap();
+                ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(ProfileActivity.this,
+                        binding.imageProfile,"image");
+                Intent intent = new Intent(ProfileActivity.this, ViewImageActivity.class);
+                startActivity(intent, activityOptionsCompat.toBundle());
+            }
+        });
+
+
     }
+
 
 
 
