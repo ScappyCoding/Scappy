@@ -1,6 +1,7 @@
 package com.codeofscappy.chat.view.profile;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -32,6 +33,7 @@ import com.codeofscappy.chat.common.Common;
 import com.codeofscappy.chat.databinding.ActivityProfileBinding;
 import com.codeofscappy.chat.view.display.ViewImageActivity;
 import com.codeofscappy.chat.view.settings.SettingsActivity;
+import com.codeofscappy.chat.view.startup.SplashScreenActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -133,6 +135,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        // Logout
+        binding.btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogSignOut();
+            }
+        });
 
     }
 
@@ -385,6 +394,31 @@ public class ProfileActivity extends AppCompatActivity {
                         getInfo();
                     }
                 });
+    }
+
+
+    // SignOut --> Methode whit Dialog-Windows
+    private void showDialogSignOut() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        builder.setMessage("Do you want to sign out?");
+        builder.setPositiveButton("Sign Out", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(ProfileActivity.this, SplashScreenActivity.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 
