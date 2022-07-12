@@ -88,9 +88,13 @@ public class SettingsActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String userName = documentSnapshot.get("userName").toString();
                 String imageProfile = documentSnapshot.get("imageProfile").toString();
+                String status = documentSnapshot.get("status").toString();
                 binding.tvUsername.setText(userName);
+                binding.tvStatus.setText(status);
+
+
                 // Download the Image-Uri and put into the View
-                Glide.with(SettingsActivity.this).load(imageProfile).into(binding.imageProfile);
+                Glide.with(SettingsActivity.this).load(imageProfile).placeholder(R.drawable.avatar).into(binding.imageProfile);
 
             }
         }).addOnFailureListener(new OnFailureListener() {

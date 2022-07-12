@@ -16,6 +16,7 @@ import com.codeofscappy.chat.databinding.ActivityMainBinding;
 import com.codeofscappy.chat.menu.CallsFragment;
 import com.codeofscappy.chat.menu.ChatsFragment;
 import com.codeofscappy.chat.menu.StatusFragment;
+import com.codeofscappy.chat.view.contact.ContactsActivity;
 import com.codeofscappy.chat.view.settings.SettingsActivity;
 
 import android.annotation.SuppressLint;
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +39,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, layout.activity_main);
+
+
+        // Open Contact-List when Clicked on FabAction
+        binding.fabAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+            }
+        });
+
+
 
        
 
@@ -151,10 +164,11 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
 
+            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void run() {
                 switch (index){
-                    case 0 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_chat)); break;
+                    case 0 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_chat));break;
                     case 1 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_camera)); break;
                     case 2 : binding.fabAction.setImageDrawable(getDrawable(drawable.ic_call)); break;
                 }

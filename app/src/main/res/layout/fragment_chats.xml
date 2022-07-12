@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background4"
@@ -27,23 +26,23 @@
             android:text="Invite your friends"
             android:textSize="25sp"
             android:fontFamily="@font/autour_one"
-            android:textColor="#2E2E2D"/>
+            android:textColor="#0E0E0E"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="10dp"
-            android:textSize="19sp"
-            android:fontFamily="@font/chicle"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/chicle"
             android:gravity="center_horizontal"
-            android:text="Chat with your friends who are use Scappy-Massenger on \nIPhone, Android, or KaiOS phone"/>
+            android:text="Chat with your friends who are use Scappy-Massenger on \nIPhone, Android, or KaiOS phone"
+            android:textColor="#2C2C2C"
+            android:textSize="19sp" />
 
-
-
-            <Button
+        <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"

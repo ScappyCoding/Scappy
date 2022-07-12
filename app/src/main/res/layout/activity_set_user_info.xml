@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
@@ -62,12 +61,6 @@
         </RelativeLayout>
 
 
-
-
-
-
-
-
         <EditText
             android:id="@+id/ed_name"
             android:layout_width="match_parent"
@@ -78,7 +71,8 @@
             android:background="@color/white"
             android:hint="Type your Name here..."
             android:padding="8dp"
-            android:textColorHint="#5A5959" />
+            android:textColor="@color/black"
+            android:textColorHint="#6E6D6D" />
 
         <TextView
             android:layout_width="wrap_content"

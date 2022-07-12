@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "941311129693",
+    "firebase_url": "https://chat-3e2d1-default-rtdb.firebaseio.com",
     "project_id": "chat-3e2d1",
     "storage_bucket": "chat-3e2d1.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "941311129693-d5nas8jg37m42vbgeu8lt8495imb14gp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codeofscappy.chat",
+            "certificate_hash": "7101bfa0406867665907c8cd71fcb4f0b7554071"
+          }
+        },
         {
           "client_id": "941311129693-tsks3b0j4t05av4eecs0d25en3p783hp.apps.googleusercontent.com",
           "client_type": 3

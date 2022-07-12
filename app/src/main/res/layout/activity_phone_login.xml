@@ -87,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <EditText
@@ -98,6 +99,7 @@
                 android:inputType="number"
                 android:maxLength="5"
                 android:maxLines="1"
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 tools:ignore="TouchTargetSizeCheck" />
 
@@ -105,7 +107,7 @@
                 android:id="@+id/ed_phone"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-
+                android:textColorHint="@color/black"
                 android:drawableTint="@color/black"
                 android:hint="176-1234567"
                 android:inputType="phone"
@@ -143,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/otp"
                 android:gravity="center_horizontal"
+                android:textColorHint="@color/black"
                 android:hint="Enter SMS-Code"
                 android:inputType="number"
                 android:maxLength="6"

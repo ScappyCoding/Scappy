@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -55,13 +56,17 @@ public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
     private FirebaseUser firebaseUser;
     private FirebaseFirestore firestore;
+    private ImageButton btnStatus;
 
-    private BottomSheetDialog bottomSheetDialog, bsDialogEditName;
+    private BottomSheetDialog bottomSheetDialog, bsDialogEditName, bsDialogEditStatus;
     private ProgressDialog progressDialog;
 
     private int IMAGE_GALLERY_REQUEST = 111;
     private int CAMERA_PIC_REQUEST = 112;
     private Uri imageUri, cameraUri;
+
+    public ProfileActivity() {
+    }
 
 
     @Override
@@ -87,20 +92,37 @@ public class ProfileActivity extends AppCompatActivity {
         // Init ProgressDialog Window
         progressDialog = new ProgressDialog(this);
 
-
+        // Prüfung ob User in Database
         if (firebaseUser != null){
             getInfo();
         }
 
         // Initial BottomSheetPhoto
         initActionClick();
+
         // Initial BottomSheetName
         ClickAction();
+
+        //Initial BottomSheetStatus
+        initStatus();
+
 
 
 
     }
 
+    // Button for BottomSheetDialog EditStatus
+    private void initStatus() {
+        binding.proEditStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBottomEditStatus();
+
+            }
+        });
+    }
+
+    // Button for  BottomSheetDialog EditName
     private void ClickAction() {
         binding.proEditName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    // Button for BottomSheetDialog-Layout
+    // Button for BottomSheetDialog PhotoGallery
     private void initActionClick() {
         binding.fabCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +141,13 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+
 
 
         // Zoomable Image Methode
@@ -146,8 +175,6 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
-
     // Methode for the DialogSheet
     @SuppressLint("ObsoleteSdkInt")
     private void showBottomSheetPickPhoto() {
@@ -157,7 +184,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openGallery();
-                bottomSheetDialog.dismiss();
+
 
             }
         });
@@ -191,7 +218,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     }
-
 
     @SuppressLint("ObsoleteSdkInt")
     private void showBottomSheetEditName() {
@@ -242,21 +268,65 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+    // BottomSheetDialog UserStatus-Edit
+    private void showBottomEditStatus() {
+
+            @SuppressLint("InflateParams") View view = getLayoutInflater().inflate(R.layout.bottom_sheet_edit_status,null);
+
+        ((View) view.findViewById(R.id.btn_cancel)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.dismiss();
+
+
+            }
+        });
+        EditText proEditStatus = view.findViewById(R.id.pro_EditStatus);
+        ((View) view.findViewById(R.id.btn_save)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditStatus(proEditStatus.getText().toString());
+                bsDialogEditStatus.dismiss();
+
+            }
+        });
+
+            bsDialogEditStatus = new BottomSheetDialog(this);
+            bsDialogEditStatus.setContentView(view);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Objects.requireNonNull(bsDialogEditStatus.getWindow()).addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+
+            bsDialogEditStatus.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    bsDialogEditStatus = null;
+                }
+            });
+
+            bsDialogEditStatus.show();
+
+        }
+
 
     // This Methode Read the Data from Current-User and Push this Into the View-Elements
     private void getInfo() {
-        firestore.collection("Users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        firestore.collection("Users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>()
+        {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String userName = documentSnapshot.get("userName").toString();
+                String status = documentSnapshot.get("status").toString();
                 String userPhone = documentSnapshot.get("userPhone").toString();
                 String imageProfile = documentSnapshot.get("imageProfile").toString();
 
 
                 binding.tvUsername.setText(userName);
                 binding.tvPhone.setText(userPhone);
-                // Download das Image via Url und bindet  es in ImageProfile View ein
-                Glide.with(ProfileActivity.this).load(imageProfile).into(binding.imageProfile);
+                binding.tvStatus.setText(status);
+                // Download das Image via Url und fügt es in ImageProfile View ein
+                Glide.with(ProfileActivity.this).load(imageProfile).placeholder(R.drawable.avatar).into(binding.imageProfile);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -268,8 +338,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
-
+    // Open Mobile-Pictures-Gallery
     private void openGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -278,17 +347,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
-
-    // Testing Camera
+    // Open Mobile Camera-Tool
     private void openCamera() {
         Intent cameraintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraintent, CAMERA_PIC_REQUEST);
     }
 
 
-
-
+   // Progress-Auth for pick a  Pictures in Mobile
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -338,8 +404,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
-
+    // Upload (Gallery-Picture) or (Camera-Picture) to Firebase-Database
     private void uploadToFirebase() {
         if (imageUri != null) {
             progressDialog.setMessage("Uploading...");
@@ -383,8 +448,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
-    // Methode to Update the new Username in Firestore-Database and make Toast when Success Saving..
+    // Update the new Username in Firestore-Database and make Toast when Success Saving..
     private void updateName(String newName) {
         firestore.collection("Users").document(firebaseUser.getUid()).update("userName",newName)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -419,6 +483,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+
+    // Update Edit-Status to Firebase-Database
+    private void updateEditStatus(String status) {
+        firestore.collection("Users").document(firebaseUser.getUid()).update("status",status)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "Update Successfully", Toast.LENGTH_SHORT).show();
+                        getInfo();
+                    }
+                });
     }
 
 

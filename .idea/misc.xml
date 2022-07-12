@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Chat-App/app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.138" />
+        <entry key="..\:/Chat-App/app/src/main/res/drawable/set_bg.xml" value="0.257" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_contacts.xml" value="0.33" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_phone_login.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_set_user_info.xml" value="0.15648148148148147" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/activity_welcome_screen.xml" value="0.22864583333333333" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/bottom_sheet_edit_name.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/bottom_sheet_edit_status.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/fragment_calls.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/fragment_chats.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/fragment_status.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/layout_call_list.xml" value="0.3625" />
+        <entry key="..\:/Chat-App/app/src/main/res/layout/layout_contact_item.xml" value="0.4666666666666667" />
+        <entry key="..\:/Chat-App/app/src/main/res/menu/menu_main.xml" value="0.3625" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/accept_button.xml" value="0.175" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/custom_progress.xml" value="0.3585" />
         <entry key="..\:/Users/CodeOfScappy/AndroidStudioProjects/Chat/app/src/main/res/drawable/ic_add_circle_outline_24.xml" value="0.1765" />
